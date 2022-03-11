@@ -4,6 +4,7 @@ console.log('-----------------------------------------------\n');
 const receitas = [];
 let id = 1;
 
+//Fazer cadastro da receita por um "input" 
 function cadastrarReceita(
    nome,
    dificuldade,
@@ -26,6 +27,8 @@ function cadastrarReceita(
    console.log('-----------------------------------------------\n')
 }
 
+
+//Exibir receitas
 function exibirReceitas(){
     for(let i = 0; i < receitas.length; i++){
         console.log(`Receita: ${receitas[i].nome}\n`);
@@ -36,6 +39,18 @@ function exibirReceitas(){
         console.log(`\n Vegan: ${receitas[i].vegan}`)
         console.log('-----------------------------------------------\n')
     }
+}
+
+//deletar um item pelo id
+function deletarReceita(id){
+    for(let i = 0; i < receitas.length; i++){
+        if(id === receitas[i].id){
+            receitas.splice(i, 1);
+            return;
+        }
+    }
+
+    console.log('Receita não encontrada');
 }
 
 cadastrarReceita(
@@ -56,3 +71,4 @@ cadastrarReceita(
 );
 
 exibirReceitas();
+
