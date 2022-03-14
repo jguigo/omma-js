@@ -46,11 +46,11 @@ function deletarReceita(id){
     for(let i = 0; i < receitas.length; i++){
         if(id === receitas[i].id){
             receitas.splice(i, 1);
-            return;
+            return console.log('Receita deletada com sucesso!');
         }
     }
 
-    console.log('Receita não encontrada');
+    console.log('Receita não encontrada!');
 }
 
 cadastrarReceita(
