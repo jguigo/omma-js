@@ -40,19 +40,45 @@ const exibirReceitas = () => {
 
 //deletar um item pelo id
 const deletarReceita = (id) => {
-   let conta = 0;
+   let verificador = 0;
    receitas.forEach((e) => {
       if (id === e.id) {
          receitas.splice(receitas.indexOf(e), 1);
-         conta++;
+         verificador++;
       }
    })
-   if(conta>0){
-      return console.log("Receita deletada com sucesso!"); 
+   if(verificador>0){
+      return console.log("Receita deletada com sucesso!\n\n"); 
    }
-   console.log('Receita não encontrada!');
+   console.log('Receita não encontrada!\n\n');
 }
 
+//buscar uma receita
+const buscarReceita = termo => {
+   console.log(`Palavra chave: "${termo}"`)
+   const busca = receitas.filter(e => e.nome.includes(termo));
+   busca.forEach(e => console.log(e.nome));
+}
+
+//atualizar receita
+const atualizarReceita = (id, nome, dificuldade, ingredientes, preparo, link, vegan) => {
+   let verificador = 0;
+   receitas.forEach(e => {
+      if(e.id === id){
+         e.nome = nome;
+         e.dificuldade = dificuldade;
+         e.ingredientes = ingredientes;
+         e.preparo = preparo;
+         e.link = link;
+         e.vegan = vegan;
+         verificador++;
+      }
+   });
+   if(verificador>0){
+      return console.log(`Receita ${id} atualizada!\n\n`); 
+   }
+   console.log(`ID não encontrado!\n\n`);
+}
 
 
 cadastrarReceita(
@@ -75,8 +101,3 @@ cadastrarReceita(
    "youtube.com.br",
    false
 );
-
-
-exibirReceitas();
-deletarReceita(2);
-console.log(receitas);
